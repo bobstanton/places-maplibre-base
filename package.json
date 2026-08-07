@@ -52,5 +52,10 @@
   },
   "peerDependencies": {
     "places-shared": "*"
+  },
+  "peerDependenciesMeta": {
+    "places-shared": {
+      "optional": true
+    }
   }
 }
