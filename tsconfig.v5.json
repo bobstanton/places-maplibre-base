@@ -1,0 +1,18 @@
+{
+  // CI insurance: typecheck the base source against maplibre-gl 5's types, in
+  // addition to the default tsconfig.json (which checks against the pinned
+  // maplibre-gl 6). Providers ship both engine majors on this one base, so it
+  // must stay compatible with both. maplibre-gl 5 is installed under the
+  // `maplibre-gl-v5` npm alias (a devDependency) purely for this pass.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "incremental": false,
+    "declaration": false,
+    "paths": {
+      "maplibre-gl": [
+        "./node_modules/maplibre-gl-v5/dist/maplibre-gl.d.ts",
+        "../node_modules/maplibre-gl-v5/dist/maplibre-gl.d.ts"
+      ]
+    }
+  }
+}

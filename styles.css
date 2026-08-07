@@ -1,0 +1,521 @@
+@import "places-shared/error-styles.css";
+
+/* Shared popup styles (.places-popup-*) come from places-shared/popup-styles.css. */
+/* Provider-specific popup container styles (.maplibregl-popup-content)
+   are defined in each provider's styles.css (e.g., stadia-map, thunderforest-map) */
+
+/* Ensure popups always stack above markers (focus/linked markers use z-index: 100). */
+.maplibregl-popup,
+.mapboxgl-popup {
+  z-index: 10000;
+  touch-action: pan-x pan-y pinch-zoom;
+}
+
+.places-popup-loading {
+  /* No inline styles needed - uses Obsidian defaults */
+}
+
+.geoapify-map .maplibregl-ctrl-attrib,
+.geoapify-map .mapboxgl-ctrl-attrib,
+.stadia-map .maplibregl-ctrl-attrib,
+.stadia-map .mapboxgl-ctrl-attrib,
+.thunderforest-map .maplibregl-ctrl-attrib,
+.thunderforest-map .mapboxgl-ctrl-attrib,
+.radar-map .maplibregl-ctrl-attrib,
+.radar-map .mapboxgl-ctrl-attrib,
+.maptiler-map .maplibregl-ctrl-attrib,
+.maptiler-map .mapboxgl-ctrl-attrib {
+  font-size: var(--font-ui-smaller);
+  opacity: 0.7;
+}
+
+.geoapify-map .maplibregl-ctrl-group,
+.geoapify-map .mapboxgl-ctrl-group,
+.stadia-map .maplibregl-ctrl-group,
+.stadia-map .mapboxgl-ctrl-group,
+.thunderforest-map .maplibregl-ctrl-group,
+.thunderforest-map .mapboxgl-ctrl-group,
+.radar-map .maplibregl-ctrl-group,
+.radar-map .mapboxgl-ctrl-group,
+.maptiler-map .maplibregl-ctrl-group,
+.maptiler-map .mapboxgl-ctrl-group {
+  border-radius: var(--radius-s);
+  box-shadow: var(--shadow-m);
+}
+
+.geoapify-map .maplibregl-map,
+.geoapify-map .mapboxgl-map,
+.stadia-map .maplibregl-map,
+.stadia-map .mapboxgl-map,
+.thunderforest-map .maplibregl-map,
+.thunderforest-map .mapboxgl-map,
+.radar-map .maplibregl-map,
+.radar-map .mapboxgl-map,
+.maptiler-map .maplibregl-map,
+.maptiler-map .mapboxgl-map {
+  border-radius: var(--radius-m);
+  overflow: hidden;
+}
+
+.maplibre-waypoint-marker {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.maplibre-waypoint-marker-emoji {
+  font-size: 18px;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+}
+
+.maplibre-waypoint-marker-text {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 4px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: var(--text-normal);
+  white-space: nowrap;
+}
+
+.maplibre-waypoint-marker-image {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+}
+
+.maplibre-waypoint-popup-content {
+  min-width: 150px;
+}
+
+.maplibre-waypoint-popup-name {
+  font-weight: bold;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.maplibre-waypoint-popup-description {
+  font-size: 12px;
+  margin-bottom: 4px;
+  color: var(--text-muted);
+}
+
+.maplibre-waypoint-popup-type {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.maplibre-waypoint-popup-elevation {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.maplibre-waypoint-popup-comment {
+  font-size: 11px;
+  font-style: italic;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.maplibre-waypoint-popup-link {
+  font-size: 11px;
+  margin-top: 4px;
+  display: block;
+}
+
+
+.places-popup .maplibregl-popup-content,
+.places-popup .mapboxgl-popup-content {
+  touch-action: manipulation;
+  padding: 12px 10px;
+  border-radius: 12px;
+  background: var(--background-primary);
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
+}
+
+.places-popup.maplibregl-popup-anchor-bottom .maplibregl-popup-tip,
+.places-popup.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+  border-top-color: var(--background-primary);
+}
+
+.places-popup.maplibregl-popup-anchor-top .maplibregl-popup-tip,
+.places-popup.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+  border-bottom-color: var(--background-primary);
+}
+
+.places-popup.maplibregl-popup-anchor-left .maplibregl-popup-tip,
+.places-popup.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+  border-right-color: var(--background-primary);
+}
+
+.places-popup.maplibregl-popup-anchor-right .maplibregl-popup-tip,
+.places-popup.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+  border-left-color: var(--background-primary);
+}
+
+.places-popup.maplibregl-popup-anchor-top-left .maplibregl-popup-tip,
+.places-popup.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip,
+.places-popup.maplibregl-popup-anchor-top-right .maplibregl-popup-tip,
+.places-popup.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip,
+.places-popup.maplibregl-popup-anchor-bottom-left .maplibregl-popup-tip,
+.places-popup.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+.places-popup.maplibregl-popup-anchor-bottom-right .maplibregl-popup-tip,
+.places-popup.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
+  display: none;
+}
+
+.places-popup .maplibregl-popup-close-button,
+.places-popup .mapboxgl-popup-close-button {
+  background: none;
+  border: none;
+  box-shadow: none;
+  color: var(--text-muted);
+  font-size: 18px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.places-popup .maplibregl-popup-close-button:hover,
+.places-popup .mapboxgl-popup-close-button:hover {
+  color: var(--text-normal);
+  background: none;
+  box-shadow: none;
+}
+
+.maplibregl-popup-close-button,
+.mapboxgl-popup-close-button {
+  touch-action: manipulation;
+}
+.places-track-builder-controls {
+  position: absolute;
+  z-index: 4;
+  left: var(--size-4-2);
+  bottom: var(--size-4-2);
+  display: flex;
+  align-items: center;
+  gap: var(--size-2-1);
+  padding: var(--size-2-1);
+  border: var(--border-width) solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  background: var(--background-primary);
+  box-shadow: var(--shadow-s);
+}
+
+.places-track-builder-controls button {
+  flex: 0 0 var(--clickable-icon-size, 36px);
+  margin: 0;
+}
+
+.places-track-builder-controls button[hidden] {
+  display: none;
+}
+
+.places-track-builder-build-control {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 var(--clickable-icon-size, 36px);
+}
+
+.places-track-builder-selection-intensity {
+  position: absolute;
+  bottom: calc(100% + var(--size-2-2));
+  left: 0;
+  display: grid;
+  grid-template-columns: auto minmax(100px, 140px);
+  align-items: center;
+  gap: var(--size-2-1) var(--size-2-2);
+  width: min(220px, calc(100vw - var(--size-4-4)));
+  max-width: calc(100vw - var(--size-4-4));
+  box-sizing: border-box;
+  padding: var(--size-2-2);
+  border: var(--border-width) solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  background: var(--background-primary);
+  box-shadow: var(--shadow-s);
+}
+
+.places-track-builder-selection-intensity[hidden] {
+  display: none;
+}
+
+.places-track-builder-selection-intensity-label {
+  font-size: var(--font-ui-smaller);
+  white-space: nowrap;
+}
+
+.places-track-builder-selection-intensity-output {
+  font-size: var(--font-ui-smaller);
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+
+.places-track-builder-selection-intensity-input {
+  width: 100%;
+  margin: 0;
+}
+
+.places-track-builder-waypoint-control,
+.places-track-builder-delete-control {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 var(--clickable-icon-size, 36px);
+}
+
+.places-track-builder-snap-control {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 var(--clickable-icon-size, 36px);
+}
+
+.places-track-builder-snap-actions {
+  position: absolute;
+  bottom: calc(100% + var(--size-2-2));
+  left: 0;
+  display: grid;
+  grid-template-columns: auto minmax(112px, 160px) 48px;
+  align-items: center;
+  gap: var(--size-2-1) var(--size-2-2);
+  width: min(300px, calc(100vw - var(--size-4-4)));
+  max-width: calc(100vw - var(--size-4-4));
+  box-sizing: border-box;
+  padding: var(--size-2-2);
+  border: var(--border-width) solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  background: var(--background-primary);
+  box-shadow: var(--shadow-s);
+}
+
+.places-track-builder-snap-actions[hidden] {
+  display: none;
+}
+
+.places-track-builder-snap-radius-label,
+.places-track-builder-snap-target-label {
+  font-size: var(--font-ui-smaller);
+  white-space: nowrap;
+}
+
+.places-track-builder-snap-radius-input {
+  width: 100%;
+  margin: 0;
+}
+
+.places-track-builder-snap-radius-output {
+  font-size: var(--font-ui-smaller);
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+
+.places-track-builder-snap-target-output {
+  font-size: var(--font-ui-smaller);
+  white-space: nowrap;
+  color: var(--text-muted);
+  grid-column: 2 / 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.places-track-builder-snap-target-help {
+  font-size: var(--font-ui-smaller);
+  white-space: nowrap;
+  color: var(--text-muted);
+  grid-column: 1 / -1;
+}
+
+.places-track-builder-snap-action-buttons {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--size-2-1);
+}
+
+.places-track-builder-waypoint-actions,
+.places-track-builder-delete-actions {
+  position: absolute;
+  bottom: calc(100% + var(--size-2-2));
+  left: 50%;
+  display: flex;
+  gap: var(--size-2-1);
+  padding: var(--size-2-1);
+  border: var(--border-width) solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  background: var(--background-primary);
+  box-shadow: var(--shadow-s);
+  transform: translateX(-50%);
+}
+
+.places-track-builder-waypoint-actions[hidden],
+.places-track-builder-delete-actions[hidden] {
+  display: none;
+}
+
+.places-track-builder-snap-apply:not(:disabled):hover,
+.places-track-builder-snap-apply:focus-visible,
+.places-track-builder-delete-apply:not(:disabled):hover,
+.places-track-builder-delete-apply:focus-visible {
+  color: var(--text-on-accent);
+  background: var(--interactive-accent);
+}
+
+.places-track-builder-controls button.is-active {
+  color: var(--text-on-accent);
+  background: var(--interactive-accent);
+}
+
+.places-track-builder-status {
+  flex: 0 0 clamp(132px, 28vw, 220px);
+  width: clamp(132px, 28vw, 220px);
+  overflow: hidden;
+  padding-inline: var(--size-2-2);
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* An action that did something other than what was asked explains itself here,
+   so the message has to be readable in full rather than ellipsised at the muted
+   default width. */
+.places-track-builder-status.is-held {
+  flex: 0 1 auto;
+  width: auto;
+  max-width: min(420px, 60vw);
+  border-radius: var(--radius-s);
+  background: color-mix(in srgb, var(--interactive-accent) 22%, var(--background-primary));
+  color: var(--text-normal);
+  font-weight: var(--font-semibold);
+}
+
+/* Toggled by PointerCursorRegistry when the pointer is over an interactive layer.
+   Declared before the track-builder rule so crosshair wins while drawing. */
+.maplibregl-canvas.places-map-pointer-cursor {
+  cursor: pointer;
+}
+
+.places-track-builder-active .maplibregl-canvas {
+  cursor: crosshair;
+}
+
+.places-track-builder-handle {
+  width: 16px;
+  height: 16px;
+  border: 3px solid var(--background-primary);
+  border-radius: 50%;
+  background: #7c3aed;
+  box-shadow: 0 1px 5px rgb(0 0 0 / 45%);
+  cursor: grab;
+}
+
+.places-track-builder-handle:active {
+  cursor: grabbing;
+}
+
+.places-track-builder-handle.is-start {
+  background: #16a34a;
+}
+
+.places-track-builder-handle.is-direct {
+  padding: 0;
+  background: #f59e0b;
+  cursor: pointer;
+}
+
+.places-track-builder-handle.is-direct.is-selected {
+  outline: 3px solid rgb(245 158 11 / 35%);
+  outline-offset: 2px;
+}
+
+.places-track-builder-handle.is-delete {
+  background: #ef4444;
+}
+
+.places-track-builder-handle.is-snap {
+  background: #0891b2;
+}
+
+/* GPX waypoints. Visible in every builder mode so they read as part of the
+   track; only waypoint mode makes them grabbable and clickable. */
+.places-track-builder-waypoint-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  font-size: 15px;
+  line-height: 1;
+  border: 2px solid var(--background-primary);
+  border-radius: 50%;
+  background: var(--background-secondary);
+  box-shadow: 0 1px 5px rgb(0 0 0 / 45%);
+  pointer-events: none;
+}
+
+.places-track-builder-waypoint-marker.is-interactive {
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.places-track-builder-waypoint-marker.is-interactive:active {
+  cursor: grabbing;
+}
+
+.places-track-builder-waypoint-marker.is-selected {
+  outline: 3px solid rgb(124 58 237 / 45%);
+  outline-offset: 2px;
+  background: var(--background-primary);
+}
+.places-track-details-panel {
+  position: absolute;
+  z-index: 90;
+  top: var(--size-4-3);
+  right: var(--size-4-3);
+  width: min(320px, calc(100% - 2 * var(--size-4-3)));
+  max-height: calc(100% - 2 * var(--size-4-3));
+  overflow: auto;
+  padding: var(--size-4-3);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  background: color-mix(in srgb, var(--background-primary) 94%, transparent);
+  box-shadow: var(--shadow-s);
+  backdrop-filter: blur(8px);
+  color: var(--text-normal);
+}
+
+.places-track-details-panel-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--size-4-2);
+  margin-bottom: var(--size-4-2);
+  padding-bottom: var(--size-4-2);
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.places-track-details-panel-title { flex: 1; min-width: 0; font-weight: var(--font-semibold); }
+.places-track-details-panel-close {
+  display: inline-flex;
+  flex: 0 0 28px;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  margin: -4px -4px 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-s);
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-muted);
+  line-height: 1;
+}
+.places-track-details-panel-close:hover { background: var(--background-modifier-hover); color: var(--text-normal); box-shadow: none; }
+.places-track-details-panel-close svg { width: var(--icon-s); height: var(--icon-s); }
+.places-track-details-panel-body { font-size: var(--font-ui-small); }

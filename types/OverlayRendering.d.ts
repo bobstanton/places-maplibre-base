@@ -1,0 +1,13 @@
+import type { ImageOverlay } from 'places-shared/overlay';
+import type * as GeoJSON from 'geojson';
+export type OverlayImageCoordinates = [[number, number], [number, number], [number, number], [number, number]];
+export declare function getGeoJsonOverlayDashArray(geojson: GeoJSON.GeoJSON, defaultDashArray: number[]): number[] | undefined;
+export declare function getImageOverlayCoordinates(overlay: ImageOverlay): OverlayImageCoordinates;
+export declare function getImageOverlayOpacity(overlay: ImageOverlay): number;
+export declare function createGeoJsonOverlaySourceId(index: number): string;
+export declare function createGeoJsonOverlayLayerIds(sourceId: string): string[];
+export declare function createImageOverlaySourceId(index: number): string;
+export declare function createImageOverlayLayerId(index: number): string;
+export declare function createVectorTileOverlayLayerId(index: number): string;
+export declare function createGeoJsonOverlayLayers(sourceId: string, defaultColor: string, dashArray?: number[]): Array<Record<string, unknown>>;
+export declare function createGeoJsonOverlayPointLayer(sourceId: string, defaultColor: string): Record<string, unknown>;
